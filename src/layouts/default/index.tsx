@@ -28,8 +28,8 @@ export default function Default({ children }: Props) {
       <div className="bg-[rgb(255,255,255)] text-black font-Jost scrollbar-thin z-0">
         <div className="flex">
           <div className="flex">
-            {isSideMenuOpen && <SideMenuContent />}
             <SideMenu />
+            {isSideMenuOpen && <SideMenuContent />}
           </div>
           <Content>{children}</Content>
         </div>

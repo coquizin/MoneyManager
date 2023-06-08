@@ -14,7 +14,7 @@ const contentDisappear = keyframes`
 export const Container = styled.div`
   width: ${SIDE_MENU_CONTENT_WIDTH};
   overflow: auto;
-  background-color: #fff;
+  background-color: #0f172a;
 
   &::-webkit-scrollbar {
     width: 4px;
@@ -29,9 +29,6 @@ export const Container = styled.div`
     background: #d1d5db;
     border-radius: 24px;
   }
-
-  background-color: white;
-  border-left: 1px solid #ccc;
 
   &:focus {
     outline: none;

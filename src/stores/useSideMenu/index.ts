@@ -33,7 +33,7 @@ const useSideMenu = create<State>((set: SetState<State>) => {
     isAnimation: false,
     isOpen: false,
     setIsOpen,
-    sideMenuType: SideMenuItemType.Watchlist,
+    sideMenuType: SideMenuItemType.Menu,
     setSideMenuType,
   };
 });

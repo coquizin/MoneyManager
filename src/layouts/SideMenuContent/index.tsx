@@ -1,3 +1,4 @@
+import { SIDE_MENU_WIDTH } from "../constants";
 import { Container } from "./styles";
 import useSideMenu from "@/stores/useSideMenu";
 
@@ -11,7 +12,12 @@ const SideMenuContent = () => {
 
   return (
     <Container disappear={isAnimation}>
-      <div className="bg-red-500">oi</div>
+      <div
+        className={`flex items-center justify-center text-white w-full bg-[#045787] h-[${SIDE_MENU_WIDTH}]`}
+      >
+        Money Manager
+      </div>
+      <div>oi</div>
     </Container>
   );
 };

@@ -1,12 +1,11 @@
 import { ListUl } from "@styled-icons/bootstrap";
-import { ClockAlarm } from "@styled-icons/fluentui-system-regular";
-import { Newspaper } from "@styled-icons/ionicons-outline";
-
+import { MoneyCnyCircle } from "@styled-icons/remix-line";
 import MenuItem from "./MenuItem";
 import { iStyles } from "./MenuItem/styles";
 import { Container, GroupMenuItems } from "./styles";
 import useSideMenu from "@/stores/useSideMenu";
 import { SideMenuItemType } from "@/stores/useSideMenu/types";
+import { SIDE_MENU_WIDTH } from "../constants";
 
 const listIcons = [
   {
@@ -38,6 +37,11 @@ const SideMenu = () => {
 
   return (
     <Container>
+      <div
+        className={`flex items-center justify-center text-white w-full bg-[#045787] h-[${SIDE_MENU_WIDTH}]`}
+      >
+        <MoneyCnyCircle size={45} />
+      </div>
       <GroupMenuItems>
         {listIcons.map((item) => (
           <MenuItem
