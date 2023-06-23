@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { SIDE_MENU_CONTENT_WIDTH } from "@/layouts/constants";
 import SideMenu from "../SideMenu";
 import SideMenuContent from "../SideMenuContent";
+import SplashScreen from "@/components/Splash";
+import { useSplashScreen } from "@/stores/useSplashScreen";
 
 type Props = {
   children: React.ReactElement;
@@ -14,7 +16,6 @@ const Content = styled.div`
   width: calc(100vh - ${SIDE_MENU_CONTENT_WIDTH});
   width: 100%;
   overflow-y: auto;
-
   -webkit-scrollbar: {
     display: none;
   }
@@ -34,6 +35,7 @@ export default function Default({ children }: Props) {
           <Content>{children}</Content>
         </div>
       </div>
+      <SplashScreen />
     </>
   );
 }

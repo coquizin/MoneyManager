@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { LoginProps } from "./types";
-import { useListConsumer } from "@/services/consumers";
 import { useCreateId } from "@/stores/useId";
 
 export default function LoginScreen() {
@@ -23,27 +22,10 @@ export default function LoginScreen() {
     defaultValues: { email: "", password: "", rememberMe: false },
   });
 
-  const consumers = useListConsumer();
+  // const consumers = useListConsumer();
   const setIdGlobal = useCreateId((state) => state.setIdGlobal);
 
   const onSubmit = (data: LoginProps) => {
-    const consumer = consumers.data?.find(
-      (consumer) =>
-        consumer.email === data.email && consumer.password === data.password
-    );
-
-    if (consumer?._id) {
-      setCookie(CookieKey.UserId, consumer?._id);
-      setCookie(CookieKey.JwtAuthToken, consumer?._id);
-      setIdGlobal(consumer?._id);
-      router.replace("/");
-    } else {
-      setError("email", {
-        type: "manual",
-        message: "Email ou senha incorretos",
-      });
-    }
-
     // setAuthScreen(true, "login");
     // setCookie(CookieKey.JwtAuthToken, "1");
     // setCookie(CookieKey.UserId, "1");

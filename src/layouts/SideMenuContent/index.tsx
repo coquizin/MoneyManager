@@ -13,7 +13,7 @@ const SideMenuContent = () => {
   return (
     <Container disappear={isAnimation}>
       <div
-        className={`flex items-center justify-center text-white w-full bg-[#045787] h-[${SIDE_MENU_WIDTH}]`}
+        className={`flex items-center justify-center text-white w-full bg-[#045787] h-[60px]`}
       >
         Money Manager
       </div>

@@ -13,8 +13,23 @@ import {
 } from "@tremor/react";
 import { InformationCircleIcon } from "@heroicons/react/outline";
 import { useState } from "react";
+import { useListSpending } from "@/services/spendings";
 
 export default function HomeScreen() {
+  const spending = useListSpending();
+  console.log(spending.data);
+  console.log("teste");
+
+  const spendigns = spending.data?.map((item) => {
+    return {
+      date: item.created_at.slice(0, 10),
+      Gastos: item.amount,
+      // Categoria: item.category,
+    };
+  });
+
+  console.log(spendigns, 1);
+
   const performance = [
     {
       date: "2021-01-01",
@@ -37,19 +52,17 @@ export default function HomeScreen() {
     },
   ];
 
-  const dollarFormatter = (value: number) =>
-    `$ ${Intl.NumberFormat("us").format(value).toString()}`;
+  const realFormatter = (value: number) =>
+    `R$ ${Intl.NumberFormat("pt-br").format(value).toString()} `;
 
   const numberFormatter = (value: number) =>
-    `${Intl.NumberFormat("us").format(value).toString()}`;
+    `${Intl.NumberFormat("pt-br").format(value).toString()}${" "} `;
 
-  const [selectedKpi, setSelectedKpi] = useState("Sales");
+  const [selectedKpi, setSelectedKpi] = useState("Gastos");
 
   // map formatters by selectedKpi
   const formatters: { [key: string]: any } = {
-    Sales: dollarFormatter,
-    Profit: dollarFormatter,
-    Customers: numberFormatter,
+    Gastos: realFormatter,
   };
 
   return (
@@ -80,22 +93,22 @@ export default function HomeScreen() {
                   defaultValue={selectedKpi}
                   onValueChange={(value) => setSelectedKpi(value)}
                 >
-                  <ToggleItem value="Sales" text="Sales" />
-                  <ToggleItem value="Profit" text="Profit" />
-                  <ToggleItem value="Customers" text="Customers" />
+                  <ToggleItem value="Gastos" text="Gastos" />
                 </Toggle>
               </div>
             </div>
-            <AreaChart
-              data={performance}
-              index="date"
-              categories={[selectedKpi]}
-              colors={["blue"]}
-              showLegend={false}
-              valueFormatter={formatters[selectedKpi]}
-              yAxisWidth={56}
-              className="mt-8 h-96"
-            />
+            {spendigns && (
+              <AreaChart
+                data={spendigns}
+                index="date"
+                categories={[selectedKpi]}
+                colors={["blue"]}
+                showLegend={false}
+                valueFormatter={formatters[selectedKpi]}
+                yAxisWidth={56}
+                className="mt-8 h-96"
+              />
+            )}
           </Card>
           <Card className="max-w-lg">
             <Flex alignItems="start">

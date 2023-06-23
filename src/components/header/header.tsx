@@ -7,7 +7,7 @@ import { MenuToggle, MenuToggleSpan } from "./styles";
 import { ArrowDown } from "@styled-icons/evaicons-solid";
 import MenuProfile from "./components/menuProfile";
 import { useCreateId } from "@/stores/useId";
-import { useGetCostumer } from "@/services/consumers";
+import { useGetCostumer } from "@/services/spendings";
 
 export default function Header() {
   const isScrolled = useScroll(0);
